@@ -8,14 +8,15 @@ public class PriorityQueue implements PriorityQueueI {
     }
 
     public PriorityQueue(int size) {
-	queue = int[size];
+	queue = new int[size];
 	numQueueItems = 0;
     }
     
     
     public void insert(int priority) {
-
-	for ( int hole = ++numQueueItems; hole > 1 && priority > queue[hole / 2]; hole /= 2 ) {
+	int hole = ++numQueueItems;
+	
+	for ( ; hole > 1 && priority > queue[hole / 2]; hole /= 2 ) {
 	    queue[hole] = queue[hole / 2];
 	}
 
@@ -30,7 +31,7 @@ public class PriorityQueue implements PriorityQueueI {
 
 	int i;
 	int child;
-	for ( int i = 1; i * 2 <= numQueueItems; i = i * 2 ) {
+	for ( i = 1; i * 2 <= numQueueItems; i = i * 2 ) {
 	    if ( queue[i * 2] > queue[(i * 2) + 1]) {
 		child = i * 2;
 	    } else {
@@ -38,7 +39,7 @@ public class PriorityQueue implements PriorityQueueI {
 	    }
 	    maxChild = queue[child];
 	    
-	    if (tmp > queue[i]) {
+	    if (child > queue[i]) {
 		queue[child] = queue[i];
 		queue[i] = maxChild;
 	    } else {

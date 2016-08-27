@@ -29,4 +29,14 @@ public class PriorityQueueTest {
 	assertEquals(153, max);
     }
 
+    @Test public void insertAndGetMaxWithMultipleInsertionsAndRetrievals() {
+	PriorityQueue queue = new PriorityQueue();
+	queue.insert(5);
+	queue.insert(1);
+	queue.getMax();
+	queue.insert(3);
+	int max = queue.getMax();	
+	assertEquals(3, max);
+    }
+    
 }

@@ -18,5 +18,15 @@ public class PriorityQueueTest {
 
 	assertEquals(2, max);
     }
-    
+
+    @Test public void insertAndGetMaxWithUnorderedItems() {
+	PriorityQueue queue = new PriorityQueue();
+	queue.insert(8);
+	queue.insert(153);
+	queue.insert(1);
+	int max = queue.getMax();
+
+	assertEquals(153, max);
+    }
+
 }

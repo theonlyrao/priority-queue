@@ -1,9 +1,21 @@
 import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
 import static org.junit.Assert.*;
 
 public class PriorityQueueTest {
+
+    private PriorityQueue queue;
+
+    @Before public void setup() {
+	queue = new PriorityQueue();
+    }
+
+    @After public void teardown() {
+	queue = null;
+    }
+    
     @Test public void insertAndGetMaxWithOneItem() {
-	PriorityQueue queue = new PriorityQueue();
 	queue.insert(1);
 	int max = queue.getMax();
 
@@ -11,7 +23,6 @@ public class PriorityQueueTest {
     }
 
     @Test public void insertAndGetMaxWithTwoItems() {
-	PriorityQueue queue = new PriorityQueue();
 	queue.insert(2);
 	queue.insert(1);
 	int max = queue.getMax();
@@ -20,7 +31,6 @@ public class PriorityQueueTest {
     }
 
     @Test public void insertAndGetMaxWithUnorderedItems() {
-	PriorityQueue queue = new PriorityQueue();
 	queue.insert(8);
 	queue.insert(153);
 	queue.insert(1);
@@ -30,7 +40,6 @@ public class PriorityQueueTest {
     }
 
     @Test public void insertAndGetMaxWithMultipleInsertionsAndRetrievals() {
-	PriorityQueue queue = new PriorityQueue();
 	queue.insert(5);
 	queue.insert(1);
 	queue.getMax();
